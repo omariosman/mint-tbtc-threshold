@@ -1,0 +1,24 @@
+{
+  "type": "module",
+  "name": "threshold2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "index": "tsc && node src/index.js",
+    "custom": "tsc && node src/custom.js",
+    "mint": "tsc && node src/mint.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "@keep-network/tbtc-v2.ts": "^2.4.1",
+    "ethers": "^5.7.2"
+  }
+}
