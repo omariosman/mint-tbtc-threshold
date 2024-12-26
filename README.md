@@ -6,7 +6,7 @@ This repository demonstrates an example workflow to mint and redeem tBTC tokens.
 
 ## How to Use the Repo?
 
-### 1. Clone the Repository
+### 1. Clone/Fork the Repository
 ```bash
 git clone git@github.com:omariosman/mint-tbtc-threshold.git
 ```
