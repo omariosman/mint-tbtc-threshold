@@ -8,7 +8,7 @@ This repository demonstrates an example workflow to mint and redeem tBTC tokens.
 
 ### 1. Clone the Repository
 ```bash
-git clone <repo-url>
+git clone git@github.com:omariosman/mint-tbtc-threshold.git
 ```
 ### 2. Install Dependencies
 ```
