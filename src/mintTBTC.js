@@ -1,27 +1,19 @@
-import * as ethers from "ethers";
 import * as fs from "fs";
-import { TBTC, Deposit, Hex } from "@keep-network/tbtc-v2.ts";
+import * as ethers from "ethers";
+import { TBTC, Deposit } from "@keep-network/tbtc-v2.ts";
+import { deserializeHex } from "./services/deserialize.js";
+import dotenv from "dotenv";
+dotenv.config();
+// Public sepolia rpc node
 const RPC_URL = "https://ethereum-sepolia.rpc.subquery.network/public";
 const provider = new ethers.providers.JsonRpcProvider(RPC_URL);
-// Create an Ethers signer. Pass the private key and the above provider.
-const PRIVATE_KEY = "";
+const PRIVATE_KEY = process.env.PRIVATE_KEY;
+console.log(`PRIVATE_KEY: ${PRIVATE_KEY}`);
+// Create Ethereum signer
 const signer = new ethers.Wallet(PRIVATE_KEY, provider);
 const sdk = await TBTC.initializeSepolia(signer);
 // Read the receipt from the JSON file
 const receiptData = JSON.parse(fs.readFileSync("receipt.json", "utf-8"));
-function deserializeHex(data, expectedLength) {
-    if (data && data._hex && data._hex.data) {
-        const byteArray = Uint8Array.from(data._hex.data);
-        // Validate the byte array length
-        if (byteArray.length !== expectedLength) {
-            throw new Error(`Invalid length for hex data. Expected ${expectedLength} bytes, got ${byteArray.length}.`);
-        }
-        // Create and return a Hex instance
-        const hexData = Hex.from(Buffer.from(byteArray));
-        return hexData;
-    }
-    throw new Error("Invalid hex data format in JSON.");
-}
 const receipt = {
     depositor: receiptData.depositor,
     blindingFactor: deserializeHex(receiptData.blindingFactor, 8),
@@ -32,7 +24,6 @@ const receipt = {
         ? deserializeHex(receiptData.extraData, 32)
         : undefined,
 };
-//console.log(`receipt: ${JSON.stringify(receipt, null, 2)}`)
 const deposit = await Deposit.fromReceipt(receipt, sdk.tbtcContracts, sdk.bitcoinClient);
 console.log(await deposit.getBitcoinAddress());
 const txHash = await deposit.initiateMinting();

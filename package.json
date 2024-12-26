@@ -7,9 +7,8 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "index": "tsc && node src/index.js",
-    "custom": "tsc && node src/custom.js",
-    "mint": "tsc && node src/mint.js"
+    "getBTCAddr": "tsc && node src/getBTCAddr.js",
+    "mintTBTC": "tsc && node src/mintTBTC.js"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +18,7 @@
   },
   "dependencies": {
     "@keep-network/tbtc-v2.ts": "^2.4.1",
+    "dotenv": "^16.4.7",
     "ethers": "^5.7.2"
   }
 }
