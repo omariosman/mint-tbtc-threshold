@@ -1,6 +1,6 @@
 # tBTC Mint/Redeem Example
 
-This is a TypeScript project that uses the [tBTC]([URL](https://docs.threshold.network/applications/tbtc-v2)) Bitcoin/Ethereum bridge to mint and redeem tBTC tokens.
+This is a TypeScript project that uses the [tBTC](https://docs.threshold.network/applications/tbtc-v2) Bitcoin/Ethereum bridge to mint and redeem tBTC tokens.
 
 This repository demonstrates an example workflow to mint and redeem tBTC tokens.
 
