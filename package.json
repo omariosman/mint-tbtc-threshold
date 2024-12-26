@@ -8,7 +8,8 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "getBTCAddr": "tsc && node src/getBTCAddr.js",
-    "mintTBTC": "tsc && node src/mintTBTC.js"
+    "mintTBTC": "tsc && node src/mintTBTC.js",
+    "redeemTBTC": "tsc && node src/redeemTBTC.js"
   },
   "keywords": [],
   "author": "",
